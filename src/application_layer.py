@@ -1,22 +1,19 @@
 class ApplicationLayer:
-  """
-  The ApplicationLayer class represents the application layer of the OSI model.
-  It is responsible for the sending and receiving of data.
-  """
-  def __init__(self):
-      """
-      The constructor for the ApplicationLayer class.
-      """
-      pass
+    def __init__(self):
+        pass
 
-  def send(self, data):
-      """
-      The send method is responsible for sending data to the other system.
-      """
-      pass
+    def send(self, data):
+        """
+        The send method is responsible for sending data to the other system.
+        """
+        # For simplicity, let's just print the data
+        print(f"Sending data: {data}")
 
-  def receive(self):
-      """
-      The receive method is responsible for receiving data from the other system.
-      """
-      pass
+    def receive(self, data):
+        """
+        The receive method is responsible for receiving data from the other system.
+        """
+        
+        # Decode the byte string
+        data = data.decode('utf-8')
+        print(f"Received data: {data}")
