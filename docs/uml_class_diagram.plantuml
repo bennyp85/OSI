@@ -1,0 +1,95 @@
+@startuml
+
+class PhysicalLayer {
+ +transmit(data)
+ +receive()
+}
+
+class DataLinkLayer {
+ +frame(data)
+ +unframe(frame)
+}
+
+class NetworkLayer {
+ +route(data)
+ +forward(data)
+}
+
+class TransportLayer {
+ +segment(data)
+ +reassemble(data)
+}
+
+class SessionLayer {
+ +establish()
+ +terminate()
+}
+
+class PresentationLayer {
+ +encode(data)
+ +decode(data)
+}
+
+class ApplicationLayer {
+ +send(data)
+ +receive()
+}
+
+class TestPhysicalLayer {
+ +setUp()
+ +test_transmit()
+ +test_receive()
+}
+
+class TestDataLinkLayer {
+ +setUp()
+ +test_frame()
+ +test_unframe()
+}
+
+class TestNetworkLayer {
+ +setUp()
+ +test_route()
+ +test_forward()
+}
+
+class TestTransportLayer {
+ +setUp()
+ +test_segment()
+ +test_reassemble()
+}
+
+class TestSessionLayer {
+ +setUp()
+ +test_establish()
+ +test_terminate()
+}
+
+class TestPresentationLayer {
+ +setUp()
+ +test_encode()
+ +test_decode()
+}
+
+class TestApplicationLayer {
+ +setUp()
+ +test_send()
+ +test_receive()
+}
+
+PhysicalLayer -- DataLinkLayer
+DataLinkLayer -- NetworkLayer
+NetworkLayer -- TransportLayer
+TransportLayer -- SessionLayer
+SessionLayer -- PresentationLayer
+PresentationLayer -- ApplicationLayer
+
+TestPhysicalLayer -- PhysicalLayer
+TestDataLinkLayer -- DataLinkLayer
+TestNetworkLayer -- NetworkLayer
+TestTransportLayer -- TransportLayer
+TestSessionLayer -- SessionLayer
+TestPresentationLayer -- PresentationLayer
+TestApplicationLayer -- ApplicationLayer
+
+@enduml
