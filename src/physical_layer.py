@@ -7,8 +7,12 @@ class PhysicalLayer:
         pass
 
     def transmit(self, data):
+
         bitstream = self.data_to_bitstream(data)
         # Code to transmit bitstream goes here
+        # check to see if the data is a bitstream
+        if not isinstance(bitstream, str):
+            raise TypeError("Data must be a bitstream")
         return bitstream
 
     def receive(self, received_bitstream):

@@ -5,6 +5,7 @@ from src.transport_layer import TransportLayer
 from src.session_layer import SessionLayer
 from src.presentation_layer import PresentationLayer
 from src.application_layer import ApplicationLayer
+from src.mock_route import MockRoute
 
 def main():
     # Create instances of the layers
@@ -20,6 +21,12 @@ def main():
     data = "Hello, world!"
     print(f"Original data: {data}")
 
+    # Create a mock route
+    mock_route = MockRoute()
+    mock_route.destination = "192.168.1.1"
+    mock_route.next_hop = "192.168.1.2"
+    network_layer.add_route(mock_route.destination, mock_route.next_hop)
+
     # Use the layers to process the data
     application_layer.send(data)
     encoded_data = presentation_layer.encode(data)
@@ -29,12 +36,12 @@ def main():
     bitstream = ""
     for segment in segmented_data:
         framed_data = data_link_layer.frame(segment)
-        print(f"Transmitting framed data: {framed_data}")
+        # print(f"Transmitting framed data: {framed_data}")
         bitstream += physical_layer.transmit(framed_data)
         # Here you would actually send the bitstream over the network
 
     # Simulate receiving the same data
-    print(f"Received bitstream: {bitstream}")
+    # print(f"Received bitstream: {bitstream}")
 
     # Use the layers to process the data
     framed_data = physical_layer.receive(bitstream)
